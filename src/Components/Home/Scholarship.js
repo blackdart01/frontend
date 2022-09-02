@@ -1,16 +1,17 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-function Scholarship() {
+function Scholarship(props) {
   const objFlex = {
     display: "flex",
     justifyContent: "center",
   };
-  let Navigate = useNavigate();
+  // let Navigate = useNavigate();
   const routeChange = () => {
-    Navigate("../details");
+    // Navigate("../details");
+    window.open(props.lnk, "_self");
   };
   // const lineObj = {
   //   width: "1px",
@@ -20,7 +21,9 @@ function Scholarship() {
   // };
   return (
     <div>
-      <Card style={{ width: "18rem", border: "1px solid #dadada" }}>
+      <Card
+        style={{ width: "28rem", height: "16rem", border: "1px solid #dadada" }}
+      >
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
           <Card.Title
@@ -28,7 +31,8 @@ function Scholarship() {
               textAlign: "center",
             }}
           >
-            AICTE Scholarship
+            {props.name}
+            {/* AICTE Scholarship */}
           </Card.Title>
           <hr style={{ height: "2px" }} />
           <div style={objFlex}>
@@ -37,23 +41,24 @@ function Scholarship() {
                 width: "50%",
                 borderRight: "1px solid",
                 textAlign: "center",
+                paddingRight: "5px",
               }}
             >
-              <Card.Subtitle style={{ display: "block", margin: "0 auto" }}>
-                Award
-              </Card.Subtitle>
-              <Card.Text>Score Based</Card.Text>
+              {/* <Card.Subtitle style={{ display: "block", margin: "0 auto" }}> */}
+              <Card.Subtitle>Award</Card.Subtitle>
+              <Card.Text>{props.award}</Card.Text>
             </div>
             {/* <div style={lineObj}></div> */}
             <div
               style={{
                 width: "50%",
                 borderLeft: "1px solid",
+                paddingLeft: "5px",
                 textAlign: "center",
               }}
             >
               <Card.Subtitle>Eligibility</Card.Subtitle>
-              <Card.Text>BE/B.Tech</Card.Text>
+              <Card.Text>{props.eligibility}</Card.Text>
             </div>
           </div>
           <br />
@@ -63,6 +68,10 @@ function Scholarship() {
               backgroundColor: "#3bb19b",
               border: "none",
               display: "block",
+              position: "absolute",
+              bottom: "5%",
+              left: "50%",
+              transform: "translate(-50%,-100%)",
               // width: "100%",
               margin: "auto",
             }}
@@ -71,7 +80,7 @@ function Scholarship() {
             View Scholarship
           </Button>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
+        <Card.Footer className="text-muted">{props.lastday}</Card.Footer>
       </Card>
     </div>
   );
